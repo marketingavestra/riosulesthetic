@@ -1,37 +1,39 @@
 /* Shared by both routes. Content keeps the original responsive V1 layout. */
+html, body {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #1f2e28;
+}
+/* Keep this body-level layer outside all content/animation/overflow wrappers.
+   lvh covers the largest iOS viewport even while the browser bars retract;
+   vh is the fallback. A definite height makes the video's 100% reliable. */
 .video-background {
   position: fixed;
-  inset: 0;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  min-height: 100dvh;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
   background: #1f2e28 url('/assets/background-poster-v2.jpg') center / cover no-repeat;
 }
 .video-background video {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
+  max-height: none;
   object-fit: cover;
   object-position: center;
   opacity: 0;
 }
 .video-background.is-playing video { opacity: 1; }
-.video-toggle {
-  position: fixed;
-  right: 12px;
-  bottom: max(12px, env(safe-area-inset-bottom));
-  z-index: 20;
-  min-height: 44px;
-  padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, .4);
-  border-radius: 12px;
-  background: rgba(12, 24, 19, .85);
-  color: white;
-  font-size: 12px;
-  cursor: pointer;
-}
-.video-toggle[hidden] { display: none; }
-.video-toggle:focus-visible { outline: 2px solid white; outline-offset: 3px; }
 /* The supplied PNG has large transparent margins. This viewport trims only
    those margins in CSS, without editing the asset or distorting its artwork.
    Visible bounds: x=142..837, y=619..1256 in a 1080 x 1920 canvas. */
@@ -76,24 +78,24 @@
   text-shadow: 0 1px 3px rgba(0, 15, 30, .8);
 }
 .glass-button.button-blue {
-  background: linear-gradient(120deg, rgba(12, 65, 111, .36), rgba(32, 111, 169, .22));
+  background: linear-gradient(120deg, rgba(12, 65, 111, .22), rgba(32, 111, 169, .12));
   border-color: rgba(164, 215, 255, .38);
   box-shadow: 0 6px 22px rgba(0, 30, 66, .22), inset 0 1px 0 rgba(255, 255, 255, .12);
 }
 .glass-button.button-blue:hover {
-  background: linear-gradient(120deg, rgba(18, 80, 133, .42), rgba(45, 130, 191, .28));
+  background: linear-gradient(120deg, rgba(18, 80, 133, .28), rgba(45, 130, 191, .18));
   border-color: rgba(190, 228, 255, .65);
 }
 .glass-button.button-whatsapp {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: linear-gradient(115deg, rgba(10, 102, 61, .72), rgba(22, 149, 83, .60));
+  background: linear-gradient(115deg, rgba(10, 102, 61, .50), rgba(22, 149, 83, .40));
   border-color: rgba(133, 244, 176, .55);
   box-shadow: 0 5px 24px rgba(7, 86, 48, .28);
 }
 .glass-button.button-whatsapp:hover {
-  background: linear-gradient(115deg, rgba(13, 120, 71, .78), rgba(24, 164, 91, .68));
+  background: linear-gradient(115deg, rgba(13, 120, 71, .58), rgba(24, 164, 91, .48));
   border-color: rgba(175, 255, 207, .78);
 }
 .button-whatsapp > * { position: relative; z-index: 2; }
@@ -135,5 +137,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .video-background video { display: none; }
-  .video-toggle { display: none; }
 }
+
+/* A translucent overlay keeps the video visible all the way to the footer. */
+.video-readability-overlay { position: fixed; inset: 0; pointer-events: none; background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.6)); }

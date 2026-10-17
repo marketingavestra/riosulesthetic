@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/rio-sul-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/rio-sul-favicon-180.png">
   <title>Rio Sul Esthetic</title>
   <meta name="description" content="Rio Sul Esthetic em Santa Maria, RS">
   <meta name="author" content="Rio Sul Esthetic">
@@ -19,15 +22,13 @@
   <script src="/home.js" defer></script>
 </head>
 <body>
-  <div class="min-h-screen relative overflow-hidden">
     <!-- Vídeo decorativo; a imagem permanece visível quando a reprodução não está disponível. -->
     <div class="video-background" aria-hidden="true">
       <video data-background-video autoplay muted loop playsinline preload="none" poster="/assets/background-poster-v2.jpg" tabindex="-1">
         <source data-src="/assets/background-video-v2.mp4" type="video/mp4">
       </video>
     </div>
-    <button type="button" class="video-toggle" data-video-toggle hidden aria-label="Pausar vídeo de fundo">Pausar vídeo</button>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-30% to-[hsl(156,18%,15%)]"></div>
+  <div class="min-h-screen relative overflow-hidden">
     <div class="fixed inset-0 bg-black/40"></div>
     <div class="relative z-10 min-h-screen flex flex-col w-full max-w-md mx-auto px-5">
       <header class="flex flex-col items-center pt-1 pb-8 opacity-0 animate-fade-in" style="animation-delay:50ms;animation-fill-mode:forwards">

@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/rio-sul-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/rio-sul-favicon-180.png">
   <title>Rio Sul Esthetic</title>
   <meta name="description" content="Rio Sul Esthetic em Santa Maria, RS">
   <meta name="author" content="Rio Sul Esthetic">
@@ -26,16 +29,15 @@
   <script defer src="/site/clinic.js"></script>
 </head>
 <body>
-<div id="root">
-  <div class="min-h-screen relative overflow-x-hidden">
     <!-- Vídeo decorativo; a imagem permanece visível quando a reprodução não está disponível. -->
     <div class="video-background" aria-hidden="true">
       <video data-background-video autoplay muted loop playsinline preload="none" poster="/assets/background-poster-v2.jpg" tabindex="-1">
         <source data-src="/assets/background-video-v2.mp4" type="video/mp4">
       </video>
     </div>
-    <button type="button" class="video-toggle" data-video-toggle hidden aria-label="Pausar vídeo de fundo">Pausar vídeo</button>
-    <div data-reveal data-immediate style="--from:none;--duration:.8s;--delay:.2s" class="fixed inset-0 bg-gradient-to-b from-black/40 via-black/50 to-[hsl(156,18%,12%)]"></div>
+<div id="root">
+  <div class="min-h-screen relative overflow-x-hidden">
+    <div data-reveal data-immediate style="--from:none;--duration:.8s;--delay:.2s" class="video-readability-overlay"></div>
     <div class="relative z-10 w-full max-w-lg mx-auto px-5 pb-8">
       <header id="top" data-reveal data-immediate style="--from:translateY(-20px);--delay:.3s" class="pt-6 pb-8">
         <a href="/" class="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span class="text-sm">Voltar</span></a>
@@ -77,61 +79,6 @@
             <div data-reveal style="--from:scale(.9);--duration:.5s" class="glass-button rounded-2xl p-4 text-center aspect-square flex flex-col items-center justify-center">
               <p class="text-xl sm:text-2xl font-bold text-white mb-1"><span data-counter="98">98</span>%</p>
               <p class="text-[9px] sm:text-xs text-white/70 uppercase tracking-wider leading-tight">Satisfação</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section data-reveal class="mb-8" aria-labelledby="feedback-title">
-        <h2 id="feedback-title" class="text-lg font-semibold text-white mb-4">Exemplos de feedback</h2>
-        <p class="text-sm text-white/90 leading-relaxed mb-4">Textos ilustrativos. Substituir por depoimentos reais de clientes.</p>
-        <!-- Arraste no celular ou use a rolagem horizontal para ver todos os exemplos. -->
-        <div class="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory -mx-5 px-5 scrollbar-hide" tabindex="0" aria-label="Exemplos ilustrativos de feedback">
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.0s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">A consultora ouviu o que eu precisava e me ajudou a conhecer as opções da Rio Sul.</p>
-              <p class="text-sm font-medium text-white">Atendimento</p>
-            </div>
-          </div>
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.1s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">Gostei de poder conversar com a equipe sobre os produtos para a rotina da minha clínica.</p>
-              <p class="text-sm font-medium text-white">Produtos</p>
-            </div>
-          </div>
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.2s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">Recebi orientações claras sobre a locação de tecnologias e as opções disponíveis.</p>
-              <p class="text-sm font-medium text-white">Locação</p>
-            </div>
-          </div>
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.3s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">A equipe me ajudou a entender as alternativas de tecnologias para venda e locação.</p>
-              <p class="text-sm font-medium text-white">Tecnologias</p>
-            </div>
-          </div>
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.4s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">Encontrei opções de descartáveis e EPIs para organizar as compras do meu espaço.</p>
-              <p class="text-sm font-medium text-white">Descartáveis e EPIs</p>
-            </div>
-          </div>
-          <div data-reveal data-horizontal style="--from:translateX(30px);--duration:.5s;--delay:0.5s">
-            <div class="glass-button rounded-2xl p-5 opacity-0 animate-fade-up w-[260px] min-h-[160px] flex flex-col snap-center" style="animation-delay:0ms;animation-fill-mode:forwards">
-              <p class="text-xs text-white/80 mb-3">Exemplo ilustrativo</p>
-              <div class="flex gap-1 mb-3 text-yellow-400" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="text-sm text-white/90 leading-relaxed mb-4 flex-1">Foi bom contar com um atendimento próximo para tirar dúvidas sobre o catálogo.</p>
-              <p class="text-sm font-medium text-white">Relacionamento</p>
             </div>
           </div>
         </div>
