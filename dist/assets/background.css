@@ -1,10 +1,12 @@
 /* Shared by both routes. Content keeps the original responsive V1 layout. */
+/* Match Safari’s root/background tint to the dark video. Browser controls
+   remain native UI; avoid the previous contrasting green safe-area bands. */
 html, body {
   margin: 0;
   min-height: 100%;
   width: 100%;
   overflow-x: hidden;
-  background-color: #1f2e28;
+  background-color: #030e16;
 }
 /* Keep this body-level layer outside all content/animation/overflow wrappers.
    lvh covers the largest iOS viewport even while the browser bars retract;
@@ -19,7 +21,7 @@ html, body {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #1f2e28 url('/assets/background-poster-v2.jpg') center / cover no-repeat;
+  background: #030e16 url('/assets/background-poster-v2.jpg') center / cover no-repeat;
 }
 .video-background video {
   position: absolute;

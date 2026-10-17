@@ -92,3 +92,13 @@ assert '.video-readability-overlay' in css
 print('PASS: hidden video controls removed; reduced motion, tab visibility and fallback preserved')
 assert "video.addEventListener('pause', showPoster)" in background_js
 assert "video.addEventListener('error', showPoster)" in background_js
+
+# Safari derives native bar/overscroll tint from the root background on recent
+# versions; theme-color covers supporting browsers. Neither paints over UI.
+assert 'background-color: #030e16;' in css
+assert "background: #030e16 url('/assets/background-poster-v2.jpg')" in css
+assert '#1f2e28' not in css
+for page in [root / 'dist/index.html', root / 'dist/site/index.html']:
+    text = page.read_text()
+    assert '<meta name="theme-color" content="#030e16">' in text
+print('PASS: dark native-browser theme and root/video fallback are consistent')
