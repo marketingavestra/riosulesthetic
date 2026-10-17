@@ -45,8 +45,12 @@ assert '.home-header { flex: 1 0 auto; }' in css
 assert '.home-header .brand-logo--home { margin-bottom: 0; }' in css
 title = css.split('.home-profile-title {', 1)[1].split('}', 1)[0]
 assert 'flex: 1' in title and 'align-items: center' in title
+assert 'width: 100%' in title and 'padding-inline: 32px' in title
+logo = css.split('.brand-logo--home {', 1)[1].split('}', 1)[0]
+assert 'margin: 34px auto 18px' in logo and 'left:' not in logo
 badge = css.split('.instagram-badge {', 1)[1].split('}', 1)[0]
 assert 'height: 1em' in badge and 'width: 1em' in badge
+assert 'position: absolute' in badge and 'left: calc(100% + .28em)' in badge
 assert 'https://www.instagram.com/riosul.esthetic/' in html
 assert 'alt="Rio Sul Esthetic"' in html
 assert '<title>Rio Sul Esthetic</title>' in html

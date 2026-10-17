@@ -96,7 +96,7 @@ assert "video.addEventListener('error', showPoster)" in background_js
 # Safari derives native bar/overscroll tint from the root background on recent
 # versions; theme-color covers supporting browsers. Neither paints over UI.
 assert 'background-color: #030e16;' in css
-assert "background: #030e16 url('/assets/background-poster-v2.jpg')" in css
+assert "background: #030e16 url('/assets/background-poster-v3.jpg')" in css
 assert '#1f2e28' not in css
 for page in [root / 'dist/index.html', root / 'dist/site/index.html']:
     text = page.read_text()
