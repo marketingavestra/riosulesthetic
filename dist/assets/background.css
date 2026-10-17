@@ -146,11 +146,25 @@ html, body {
   pointer-events: none;
   z-index: 1;
 }
+/* The outer layer owns the continuous depth motion. The link keeps its
+   entrance/press transform and the independent WAAPI hover/mobile shake.
+   Scale and green glow share one timeline, peaking together at 1.02. */
+.whatsapp-depth {
+  width: 100%;
+  min-width: 0;
+  border-radius: 1rem;
+  transform-origin: center;
+  animation: whatsapp-depth 3s ease-in-out infinite;
+}
+@keyframes whatsapp-depth {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(80, 244, 148, 0); }
+  50% { transform: scale(1.02); box-shadow: 0 0 16px rgba(80, 244, 148, .24); }
+}
 /* Animate separate layers so the entrance/press transforms remain intact. */
 .button-whatsapp::before {
   inset: 0;
   border-radius: inherit;
-  animation: whatsapp-pulse 2.8s ease-in-out infinite;
+  animation: whatsapp-pulse 3s ease-in-out infinite;
 }
 .button-whatsapp::after {
   inset: 0 auto 0 0;
@@ -167,7 +181,28 @@ html, body {
   0%, 12% { transform: translateX(-120%); }
   65%, 100% { transform: translateX(220%); }
 }
+/* Only the external “Acessar Site” link receives the light-blue glow.
+   A pseudo-element avoids replacing its entrance or press animation. */
+.glass-button.button-site { position: relative; isolation: isolate; }
+.button-site::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(125, 211, 255, .38), inset 0 0 10px rgba(170, 229, 255, .16);
+  animation: site-glow 3s ease-in-out infinite;
+}
+@keyframes site-glow {
+  0%, 100% { opacity: .18; }
+  50% { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
+  .whatsapp-depth { animation: none; transform: none; box-shadow: none; }
+  .button-site::before { animation: none; opacity: .18; }
+  .button-whatsapp, .button-site { animation: none !important; opacity: 1; transition: none !important; }
+  .button-whatsapp:hover, .button-whatsapp:active,
+  .button-site:hover, .button-site:active { transform: none !important; }
   .button-whatsapp::before, .button-whatsapp::after { animation: none; }
   .button-whatsapp::after { display: none; }
 }

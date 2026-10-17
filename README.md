@@ -56,3 +56,10 @@ Os caminhos absolutos pressupõem publicação na raiz do domínio. Para hospeda
 - Confira textos de serviços, contatos, créditos, direitos de uso das mídias e metadados antes de publicar.
 
 Esta exportação contém os arquivos editáveis atuais e seus testes. Não inclui histórico Git anterior, credenciais, configurações privadas de hospedagem, cópias de produção antigas ou mídias sem uso. Nenhuma publicação é realizada pelos comandos de visualização ou testes acima.
+
+## Profundidade e brilho dos CTAs
+Os dois botões do WhatsApp têm uma camada externa `.whatsapp-depth` que pulsa a cada 3 segundos, crescendo suavemente de 1 para 1,02 e voltando. O halo verde externo e o brilho interno atingem o pico juntos; o reflexo continua independente. A camada externa mantém intactos o `transform` de entrada/pressão e o movimento individual de mouse/celular de `whatsapp-motion.js`.
+
+Somente o botão externo “Acessar Site” usa `.button-site`, com um brilho azul-claro suave em camada própria. Nenhum outro botão azul recebe esse efeito. A preferência por movimento reduzido desativa os pulsos, o reflexo e as animações/interações de transformação desses CTAs, deixando-os visíveis e clicáveis.
+
+Verificações adicionais: `python3 tests/cta-effects.test.py` e `node --test tests/cta-effects.browser.js`. A segunda é opcional e exige Playwright e Chromium (`CHROMIUM_PATH` opcional), testa as duas rotas em 320, 390 e 1440 px, compara os extremos da escala/sombra, verifica ausência de overflow e movimento reduzido na carga e durante a visita. Esta etapa não altera os destinos dos links nem publica o site.
