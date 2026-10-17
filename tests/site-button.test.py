@@ -36,6 +36,8 @@ assert {'glass-button', 'button-blue'} <= set(button['attrs']['class'].split())
 assert button['images'][0]['src'] == '/assets/riosul-site-logo.png'
 index = page.links.index(button)
 assert page.links[index - 1]['attrs']['href'] == '/site/'
+assert page.links[index - 1]['text'].strip() == 'Sobre Nós'
+assert page.links[index - 1]['images'][0]['src'] == '/assets/rio-sul-blue.png'
 assert page.links[index + 1]['attrs']['href'] == 'https://share.google/45jjaRNx1excqUhPe'
 assert Image.open(root / 'dist/assets/riosul-site-logo.png').size == (318, 318)
 for path in ('dist/index.html', 'dist/site/index.html'):
