@@ -56,6 +56,41 @@ html, body {
   top: -97.174254%;
 }
 .brand-logo--home { width: 100px; margin: 34px auto 18px; left: -6px; }
+/* Share the available space above the buttons evenly around the handle. */
+.home-header { flex: 1 0 auto; }
+.home-header .brand-logo--home { margin-bottom: 0; }
+.home-profile-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 104px;
+  padding-block: 24px;
+}
+.instagram-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .28em;
+  white-space: nowrap;
+}
+/* Trim the transparent canvas with CSS; the badge follows the font size. */
+.instagram-badge {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 1em;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+}
+.instagram-badge img {
+  position: absolute;
+  width: 107%;
+  height: 110%;
+  max-width: none;
+  left: -3.5%;
+  top: -5%;
+}
 .brand-logo--clinic { width: 110px; margin-inline: auto; }
 /* Clinic-button asset: square crop x=285, y=450, side=460 on 1080x1350.
    The complete artwork remains centered; the original image is unchanged. */
