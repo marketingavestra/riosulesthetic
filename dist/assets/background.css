@@ -1,0 +1,139 @@
+/* Shared by both routes. Content keeps the original responsive V1 layout. */
+.video-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #1f2e28 url('/assets/background-poster-v2.jpg') center / cover no-repeat;
+}
+.video-background video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+}
+.video-background.is-playing video { opacity: 1; }
+.video-toggle {
+  position: fixed;
+  right: 12px;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 20;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, .4);
+  border-radius: 12px;
+  background: rgba(12, 24, 19, .85);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+.video-toggle[hidden] { display: none; }
+.video-toggle:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+/* The supplied PNG has large transparent margins. This viewport trims only
+   those margins in CSS, without editing the asset or distorting its artwork.
+   Visible bounds: x=142..837, y=619..1256 in a 1080 x 1920 canvas. */
+.brand-logo {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  aspect-ratio: 695 / 637;
+  max-width: 100%;
+}
+.brand-logo img {
+  position: absolute;
+  width: 155.395683%;
+  max-width: none;
+  height: auto;
+  left: -20.431655%;
+  top: -97.174254%;
+}
+.brand-logo--home { width: 100px; margin: 34px auto 18px; left: -6px; }
+.brand-logo--clinic { width: 110px; margin-inline: auto; }
+/* Clinic-button asset: square crop x=285, y=450, side=460 on 1080x1350.
+   The complete artwork remains centered; the original image is unchanged. */
+.brand-logo--button {
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #073c70;
+}
+.brand-logo--button img {
+  width: 234.782609%;
+  left: -61.956522%;
+  top: -97.826087%;
+}
+/* Transparent glass buttons retain their tint over the moving background.
+   WhatsApp stays less transparent, with its original pulse and sheen. */
+.glass-button.button-blue,
+.glass-button.button-whatsapp {
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 15, 30, .8);
+}
+.glass-button.button-blue {
+  background: linear-gradient(120deg, rgba(12, 65, 111, .36), rgba(32, 111, 169, .22));
+  border-color: rgba(164, 215, 255, .38);
+  box-shadow: 0 6px 22px rgba(0, 30, 66, .22), inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+.glass-button.button-blue:hover {
+  background: linear-gradient(120deg, rgba(18, 80, 133, .42), rgba(45, 130, 191, .28));
+  border-color: rgba(190, 228, 255, .65);
+}
+.glass-button.button-whatsapp {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(115deg, rgba(10, 102, 61, .72), rgba(22, 149, 83, .60));
+  border-color: rgba(133, 244, 176, .55);
+  box-shadow: 0 5px 24px rgba(7, 86, 48, .28);
+}
+.glass-button.button-whatsapp:hover {
+  background: linear-gradient(115deg, rgba(13, 120, 71, .78), rgba(24, 164, 91, .68));
+  border-color: rgba(175, 255, 207, .78);
+}
+.button-whatsapp > * { position: relative; z-index: 2; }
+.button-whatsapp::before,
+.button-whatsapp::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Animate separate layers so the entrance/press transforms remain intact. */
+.button-whatsapp::before {
+  inset: 0;
+  border-radius: inherit;
+  animation: whatsapp-pulse 2.8s ease-in-out infinite;
+}
+.button-whatsapp::after {
+  inset: 0 auto 0 0;
+  width: 55%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .24), transparent);
+  transform: translateX(-120%);
+  animation: whatsapp-sheen 4.5s ease-in-out infinite;
+}
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(140, 255, 186, .08), inset 0 0 5px rgba(118, 255, 172, .03); }
+  50% { box-shadow: inset 0 0 0 2px rgba(140, 255, 186, .38), inset 0 0 18px rgba(118, 255, 172, .17); }
+}
+@keyframes whatsapp-sheen {
+  0%, 12% { transform: translateX(-120%); }
+  65%, 100% { transform: translateX(220%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button-whatsapp::before, .button-whatsapp::after { animation: none; }
+  .button-whatsapp::after { display: none; }
+}
+@media (min-width: 640px) {
+  .brand-logo--home { width: 120px; }
+  .brand-logo--clinic { width: 128px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-background video { display: none; }
+  .video-toggle { display: none; }
+}
